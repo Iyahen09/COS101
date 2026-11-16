@@ -1,72 +1,62 @@
-def force():
+# STUDENT 2 - PHYSICS CALCULATOR
+
+def density():
     mass = float(input("Enter mass: "))
-    acceleration = float(input("Enter acceleration: "))
+    volume = float(input("Enter volume: "))
+    if volume > 0:
+        print("Density =", mass / volume, "kg/m3")
+    else:
+        print("Volume must be greater than zero")
 
-    f = mass * acceleration
-    print("The force is", f, "N")
+def momentum():
+    mass = float(input("Enter mass: "))
+    velocity = float(input("Enter velocity: "))
+    print("Momentum =", mass * velocity, "kg m/s")
 
-def speed():
-    distance = float(input("Enter distance: "))
-    time = float(input("Enter time: "))
-
-    if time == 0:
-        print("Time cannot be 0")
-    
-    s = distance/time
-    print("The speed is", s, "m/s")
-
-def heat_capacity():
-    mass = float(input("Enter the mass: "))
-    specific_heat_capacity = float(input("Enter the specific heat capacity of the metal: "))
-    Titer_2 = float(input("Enter final temperature: "))
-    Titer_1 = float(input("Enter the initial temperature: "))
-
-    hc = mass * specific_heat_capacity * (Titer_2-Titer_1)
-    print("The Heat Capacity is", hc, "KgK")
-
-def impulse():
+def pressure():
     force = float(input("Enter force: "))
-    time = float(input("Enter time "))
+    area = float(input("Enter area: "))
+    if area > 0:
+        print("Pressure =", force / area, "Pascals")
+    else:
+        print("Area must be greater than zero")
 
-    imp = force * time 
-    print("The Impulse is", imp)
+def kinetic_energy():
+    mass = float(input("Enter mass: "))
+    velocity = float(input("Enter velocity: "))
+    result = 0.5 * mass * velocity ** 2
+    print("Kinetic Energy =", result, "Joules")
 
-def momentum ():
-    mass=float(input('Enter the mass:'))
-    velocity = float(input('Enter the velocity'))
-    mom = mass * velocity 
-    print('The momentum is:',mom)
+def potential_energy():
+    mass = float(input("Enter mass: "))
+    gravity = float(input("Enter gravity: "))
+    height = float(input("Enter height: "))
+    print("Potential Energy =", mass * gravity * height, "Joules")
 
 while True:
+    print("\n===== PHYSICS CALCULATOR =====")
+    print("1. Density")
+    print("2. Momentum")
+    print("3. Pressure")
+    print("4. Kinetic Energy")
+    print("5. Potential Energy")
 
-    print("Hey! What do you want to calculate?")
-    print("1. Force")
-    print("2. Speed")
-    print("3. Heat Capacity")
-    print("4. Impulse")
-    print("5. Momentum")
-    print("6. Exit")
-
-    option = input("Select a formula (1-5) or 6 to exit.")
+    option = input("Choose an operation (1-5): ")
 
     if option == "1":
-        force()
-
+        density()
     elif option == "2":
-        speed()
-
-    elif option == "3":
-        heat_capacity()
-
-    elif option == "4":
-        impulse()
-
-    elif option == "5":
         momentum()
-
-    elif option == "6":
-        print("See you later!")
-        break
-
+    elif option == "3":
+        pressure()
+    elif option == "4":
+        kinetic_energy()
+    elif option == "5":
+        potential_energy()
     else:
-        print("Invalid number request, pick a numbe from 1 to 6")
+        print("Invalid selection")
+
+    answer = input("Would you like to calculate again? (yes/no): ")
+    if answer.lower() != "yes":
+        print("Program closed.")
+        break
